@@ -1,0 +1,47 @@
+main {
+
+}
+.layout {
+    margin: 0 auto;
+    max-width: 800px;
+}
+.recent-posts {
+    /* width: 57%; */
+}
+.card-post {
+    color: #000;
+    text-decoration: none;
+}
+
+#recent-posts>.post {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    /* justify-content: center; */
+    height: 14rem;
+    margin: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    box-sizing: border-box;
+}
+
+.post:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.post-info {
+    padding: 0 40px;
+    width: 57%;
+}
+.post-cover {
+    height: 100%;
+    width: 43%;
+    box-sizing: border-box;
+}
+.post-cover img {
+    margin-right: 1rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

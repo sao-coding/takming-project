@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+nav {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+}
+
+.nav-bar {
+    padding: 10px;
+    margin: 0 10px;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.note {
+    border-radius: .1875rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;
+    background: var(--note-bg, var(--grey-2));
+    color: var(--grey-6);
+    border-left: .25rem solid var(--note-border, var(--grey-4));
+    font-size: .875em;
+    padding-left: 2.5rem;
+    --primary-color: var(--note-text);
+}
+
+.note-alert p {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.note::before {
+    display: inline-block;
+    font-weight: 600;
+    font-family: 'Font Awesome 6 Free';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    left: .5rem;
+    top: calc(50% - 0.9rem);
+    /* font-family: ic;
+    font-weight: 400; */
+    font-size: 1.5rem;
+    color: var(--note-text, var(--grey-6));
+}
+
+.note.info::before {
+    content: "\f05a";
+}
+
+.note.success::before {
+    content: "\f058";
+}
+
+.note.warning::before {
+    content: "\f071";
+}
+
+.note.error::before {
+    content: "\f057";
+}
+
+.info {
+    --note-border: #8fa4dc;
+    --note-bg: #f1f9ff;
+    --note-text: #1d4974;
+    --note-hover: #1d5fa0;
+}
+
+.success {
+    --note-border: #a3c293;
+    --note-bg: #fcfff5;
+    --note-text: #2c662d;
+    --note-hover: #3b883c;
+}
+
+.warning {
+    --note-border: #c9ba9b;
+    --note-bg: #fffbeb;
+    --note-text: #947600;
+    --note-hover: #ccb045;
+}
+
+.error {
+    --note-border: #f4b3c1;
+    --note-bg: #fff2f5;
+    --note-text: #cc0f35;
+    --note-hover: #f14668;
+}
+
+:root {
+    --grey-0: #fff;
+    --grey-1: #fdfdfd;
+    --grey-2: #f7f7f7;
+    --grey-3: #eff2f3;
+    --grey-4: #ccc;
+    --grey-5: #999;
+    --grey-6: #666;
+}
+
+.editpost {
+    position: fixed;
+    right: 20px;
+    bottom: 40px;
+}
+
+.editpost a {
+    background-color: #006aa6;
+    padding: 20px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    text-decoration: none;
+}
+
+.editpost a i.fa-solid.fa-pen {
+    font-size: 20px;
+}

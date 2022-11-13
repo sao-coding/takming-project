@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://kit.fontawesome.com/1e975f4be4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://ianlunn.github.io/Hover/css/hover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        wow = new WOW({
+            boxClass: 'wow',
+            // 当用户滚动时显示隐藏框的类名称
+            animateClass: 'animate__animated',
+            // 触发 CSS 动画的类名称（动画库默认为"animate.css"库）
+            offset: 0,
+            // 定义浏览器视口底部与隐藏框顶部之间的距离。
+            // 当用户滚动并到达此距离时，将显示隐藏的框。
+            mobile: true,
+            // 在移动设备上打开/关闭wow.js。
+            live: true
+            // 在页面上检查新的 wow.js元素。
+        })
+        wow.init();
+    </script>
+    {% block header %}{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    {% for message in messages %}
+    <div class='note {{message.tags}}'>{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</body>
+
+</html>

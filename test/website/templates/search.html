@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}基本資料查詢系統{% endblock %}
+{% block header %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- <link rel="stylesheet" href="https://sao-x.com/static/css/search.css">
+<script src="https://sao-x.com/static/js/search.js"></script> -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<script src="{% static 'js/search.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="switch">
+        <div class="list {{ active1 }}" onclick="change(this,1);">
+            <span>關鍵字查詢</span>
+        </div>
+        <div class="list {{ active2 }}" onclick="change(this,2);">
+            <span>床號查詢</span>
+        </div>
+        <div class="list {{ active3 }}" onclick="change(this,3);">
+            <span>姓名查詢</span>
+        </div>
+    </div>
+    <div class="data-search">
+        <form class="search1" id="form-search1" method="post" action="." style="display: {{ display1 }};">
+            {% csrf_token %}
+            <div class="search-container">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="search1" name="search-name" placeholder="xxx-x"
+                        required>
+                    <label for="search">關鍵字查詢</label>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">搜尋</button>
+                </div>
+            </div>
+        </form>
+        <form class="search2" id="form-search2" method="post" action="." style="display: {{ display2 }};">
+            {% csrf_token %}
+            <div class="search-container">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="search2" name="search-bed" placeholder="xxx-x" required>
+                    <label for="search">床位輸入</label>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">搜尋</button>
+                </div>
+            </div>
+        </form>
+        <form class="search3" id="form-search3" method="post" action="." style="display: {{ display3 }};">
+            {% csrf_token %}
+            <div class="search-container">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="search3" name="search-all-name" placeholder="輸入姓名"
+                        required>
+                    <label for="search">輸入姓名</label>
+                </div>
+                <button type="submit" class="btn btn-primary">查詢</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container wow animate__fadeInUp" id="data">
+
+    {% if member_list %}
+
+
+    <table class="table table-striped table-hover">
+        <tbody>
+            {% for member in member_list %}
+            <form action="." method="post">
+                {% csrf_token %}
+                <tr>
+                    <td><input name="search-name-list" type="hidden" value="{{ member.name }}">{{ member.name }}</td>
+                    <td>{{ member.bed }}</td>
+                    <td><button type="submit" class="btn btn-primary">查詢</button></td>
+                </tr>
+            </form>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% elif search_data %}
+    <table class="table table-striped table-hover">
+        <tbody>
+            {% for title,item in search_data %}
+            <tr>
+                <td>{{ title }}</td>
+                {% if forloop.first %}
+                <td><img src="{{ item }}" alt=""></td>
+                {% else %}
+                <td>{{ item }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% else %}
+            <div>
+                <div class="no-people">
+                    <span>查無此人</span>
+                </div>
+            </div>
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

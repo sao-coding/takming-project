@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 創建貼文 {% endblock %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/postedit.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+<div class="create-post">
+<div class="row">
+        <form action="." method="post">
+
+            {% csrf_token %}
+
+            <p class="col post-edit">{{ CreatePostForm.cover }}</p>
+            <p class="col post-edit">{{ CreatePostForm.title }}</p>
+
+            <p class="col post-edit">{{ CreatePostForm.content }}</p>
+            
+
+            {{test}}
+            <input type="submit" value="創建貼文">
+
+        </form>
+</div>
+</div>
+{% endblock %}

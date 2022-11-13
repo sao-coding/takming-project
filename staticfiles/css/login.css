@@ -1,0 +1,67 @@
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: url("/static/images/home.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+p label {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.login {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #fff;
+    font-family: "微軟正黑體";
+    border-radius: 10px;
+    padding: 30px;
+    width: 25%;
+}
+
+.login i {
+    font-size: 100px;
+    margin: 20px auto;
+}
+
+input[type="text"],
+input[type="password"] {
+    font-size: 16px;
+    font-family: "微軟正黑體", sans-serif;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+
+button {
+    border: 0;
+    padding: 4px 8px;
+    margin: 20px auto;
+    font-size: 18px;
+    font-family: "微軟正黑體", sans-serif;
+    background: #fff;
+    color: #000;
+    border-radius: 8px;
+}
+
+@media (max-width: 450px) {
+    .login {
+        width: 70%;
+    }
+}

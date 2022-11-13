@@ -1,0 +1,29 @@
+{% load static %}
+<div class="post-card wow animate__zoomIn">
+
+    <div class="post-info">
+        <div class="post-title">
+            <a class="post-link" href="{% url 'showpost' post.slug %}">
+                <h2>{{ post.title }}</h2>
+            </a>
+        </div>
+        <div class="post-meta-date">
+            <div class="post-created">
+                <i class="far fa-calendar-alt"></i>
+                <span>發表於: {{ post.created_at | date:"Y-m-d(l) H:i:s" }}</span>
+            </div>
+            <div class="post-updated">
+                <i class="fas fa-history"></i>
+                <span>更新於: {{ post.updated_at | date:"Y-m-d(l) H:i:s" }}</span>
+            </div>
+        </div>
+        <div class="post-content">
+            <span>{{ post.content | truncatechars:50 }}</span>
+        </div>
+    </div>
+    <div class="post-cover">
+        <a class="post-link" href="{% url 'showpost' post.slug %}">
+            <img class="card-bg" src="{{ post.cover }}" alt="">
+        </a>
+    </div>
+</div>

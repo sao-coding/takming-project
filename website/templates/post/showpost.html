@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ post.title }} {% endblock %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+{% block content %}
+<div class="post-wrap">
+    <div class="post">
+        <div class="post-info">
+            <div class="post-title text-center">
+                <h2>{{ post_data.title }}</h2>
+                {% if post_data.user == user %}
+                <a href="{% url 'editpost' post_data.slug %}"><i class="fa-solid fa-pen"></i></a>
+                <a href="{% url 'deletepost' post_data.slug %}"><i class="fa-solid fa-trash"></i></a>
+                {% endif %}
+                <a href="/post/create/">回首頁</a>
+            </div>
+            <div class="post-created text-center post-meta-date">
+                <i class="far fa-calendar-alt"></i>
+                <span>發表於: {{ post_data.created_at | date:"Y-m-d(l) H:i:s" }}</span>
+            </div>
+            <div class="post-updated text-center post-meta-date">
+                <i class="fas fa-history"></i>
+                <span>更新於: {{ post_data.updated_at | date:"Y-m-d(l) H:i:s" }}</span>
+            </div>
+            <div class="post-content">
+                <div class="content">
+                    <p>{{ post_data.content | linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -2,14 +2,51 @@ from django import forms
 from captcha.fields import CaptchaField
 from . import models
 
+
 class LoginForm(forms.Form):
-    username = forms.CharField(label="帳號", max_length=128, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label="密碼", max_length=256, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    captcha = CaptchaField(label="驗證碼")
+    username = forms.CharField(label="帳號", max_length=128, widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
+    password = forms.CharField(label="密碼", max_length=256, widget=forms.PasswordInput(
+        attrs={'class': 'form-control'}))
+    # captcha = CaptchaField(label="驗證碼")
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.label_suffix = ''
+        self.fields['username'].widget.attrs['placeholder'] = '請輸入帳號'
+        self.fields['password'].widget.attrs['placeholder'] = '請輸入密碼'
 
+class CreatePostForm(forms.ModelForm):
+    class Meta:
+        model = models.Post
+        fields = ['cover', 'title', 'content']
+        labels = {'cover': '封面', 'title': '標題', 'content': '內容'}
+        widgets = {
+            'cover': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '請輸入封面圖片網址'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '請輸入標題'}),
+            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': '請輸入內容'}),
+        }
 
-
+    def __init__(self, *args, **kwargs):
+        super(CreatePostForm, self).__init__(*args, **kwargs)
+        self.label_suffix = ''
+        # self.fields['cover'].widget.attrs['placeholder'] = '請輸入封面圖片網址'
+        # self.fields['title'].widget.attrs['placeholder'] = '請輸入標題'
+        # self.fields['content'].widget.attrs['placeholder'] = '請輸入內容'
     
+# class EditPostForm(forms.ModelForm):
+#     class Meta:
+#         model = models.Post
+#         fields = ['title', 'content']
+#         labels = {'title': '標題', 'content': '內容'}
+#         widgets = {
+#             'title': forms.TextInput(attrs={'class': 'col form-control', 'placeholder': '請輸入標題'}),
+#             'content': forms.Textarea(attrs={'class': 'col form-control', 'placeholder': '請輸入內容'}),
+#         }
+#         def __init__(self, *args, **kwargs):
+#             super(editpostForm, self).__init__(*args, **kwargs)
+#             self.label_suffix = ''
+
+
 # class ContactForm(forms.Form):
 #     CITY = [
 #         ['TP', 'Taipei'],

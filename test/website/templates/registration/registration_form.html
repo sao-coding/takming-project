@@ -1,0 +1,26 @@
+<!-- registration_form.html (Registration01) -->
+{% extends "base.html" %}
+{% block title %}註冊宿舍Dcard{% endblock %}
+{% block content %}
+<div class='container'>
+    {% for message in messages %}
+    <div class='note {{message.tags}}'>{{ message }}</div>
+    {% endfor %}
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='panel panel-default'>
+                <div class='panel-heading' align=center>
+                    <h3>註冊宿舍Dcard</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action='.' method='POST'>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type='submit' value='註冊'><br />
+    </form>
+</div>
+{% endblock %}

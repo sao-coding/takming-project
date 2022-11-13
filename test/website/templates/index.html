@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}首頁{% endblock %}
+{% block header %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+<script src="{% static 'js/infinite.js' %}"></script>
+<link rel="stylesheet" type="text/css"
+    href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css"> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+<!-- <script>
+    new WOW().init();
+</script> -->
+{% endblock %}
+{% block content %}
+
+<!-- <div class="wow animate__bounce">
+    <div class="note warning">
+        <p>{{ test }}</p>
+    </div>
+</div> -->
+<main class="layout">
+    <div class="recent-posts" id="scroll-element">
+
+        {% include 'post/_posts.html' with posts=posts %}
+
+
+    </div>
+    <div id="bottom-sentinel">
+    </div>
+    <div class="createpost hvr-shrink">
+        <a href="/create/"><i class="fa-solid fa-pen"></i></a>
+    </div>
+</main>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let bottomSentinel = document.querySelector("#bottom-sentinel");
+      let scrollElement = document.querySelector("#scroll-element");
+      let baseUrl = "{% url 'post-list' %}";
+      attachInfiniteScroll(bottomSentinel, scrollElement, baseUrl);
+    })
+  </script>
+{% endblock %}

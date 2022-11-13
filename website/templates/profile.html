@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}首頁{% endblock %}
+{% block header %}
+{% load static %}
+{% endblock %}
+{% block content %}
+<p>關於:</p>
+<p>{{ profile.about }}</p>
+<p>國家:</p>
+<p>{{ profile.country }}</p>
+{% endblock %}

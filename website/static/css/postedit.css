@@ -1,0 +1,45 @@
+.create-post, .edit-post {
+    /* display: flex;
+    justify-content: center; */
+    margin: 12px;
+}
+
+.create-post input[type="submit"], .edit-post input[type="submit"] {
+    position: absolute;
+    right: 52px;
+    background-color: #3397cf;
+    border: none;
+    border-radius: 5px;
+    padding: 11px 1em;
+    color: white;
+}
+.create-post input[type="submit"]:hover, .edit-post input[type="submit"]:hover {
+    background-color: #5ab0db;
+}
+.post-edit {
+    padding: 0 40px;
+}
+
+.post-edit input{
+    font-family: "微軟黑正體";
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 40px;
+    overflow-x: hidden;
+    width: 100%;
+    border: none;
+    padding: 0px;
+    outline: none;
+}
+
+.post-edit textarea{
+    font-family: "微軟黑正體";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 40px;
+    overflow-x: hidden;
+    width: 100%;
+    border: none;
+    padding: 0px;
+    outline: none;
+}
